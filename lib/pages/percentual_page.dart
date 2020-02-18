@@ -26,9 +26,7 @@ class _PercentualPageState extends State<PercentualPage> {
   Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
             PercentualSlider(
               title: 'Fundos de Renda Fixa',
@@ -129,13 +127,14 @@ class _PercentualPageState extends State<PercentualPage> {
               ),
               color: Colors.blue[700],
             ),
-            Expanded(
-              child: Center(
-                child: isLoading
-                    ? Center(child: CircularProgressIndicator())
-                    : profile == null
-                        ? Container()
-                        : Container(
+            Center(
+              child: isLoading
+                  ? Center(child: CircularProgressIndicator())
+                  : profile == null
+                      ? Container(height: 100,)
+                      : Container(
+                          height: 100,
+                          child: Center(
                             child: Text(
                               profile,
                               style: TextStyle(
@@ -144,7 +143,7 @@ class _PercentualPageState extends State<PercentualPage> {
                               ),
                             ),
                           ),
-              ),
+                        ),
             )
           ],
         ),
